@@ -455,8 +455,7 @@
 		{
 
 			// Read the existing PDF as a byte array
-			//var pdfText = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
-			//var pdfBytes = Encoding.UTF8.GetBytes(pdfText);
+
 			byte[] pdfBytes = System.IO.File.ReadAllBytes(filePath);
 
 			if (pdfBytes == null || pdfBytes.Length == 0)
