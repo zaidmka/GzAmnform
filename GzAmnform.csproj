@@ -15,5 +15,10 @@
   <ItemGroup>
     <Folder Include="Data\" />
   </ItemGroup>
+	<ItemGroup>
+		<Content Include="PDF\**\*">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 </Project>
