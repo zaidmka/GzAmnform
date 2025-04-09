@@ -9,37 +9,39 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GzAmnform
 build_property.RootNamespace = GzAmnform
-build_property.ProjectDir = D:\dev7\GzAmnform\
+build_property.ProjectDir = C:\Users\asus\source\repos\GzAmnform\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\dev7\GzAmnform
+build_property.MSBuildProjectDirectory = C:\Users\asus\source\repos\GzAmnform
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/dev7/GzAmnform/App.razor]
+[C:/Users/asus/source/repos/GzAmnform/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/dev7/GzAmnform/Shared/SurveyPrompt.razor]
+[C:/Users/asus/source/repos/GzAmnform/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/dev7/GzAmnform/_Imports.razor]
+[C:/Users/asus/source/repos/GzAmnform/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/dev7/GzAmnform/Pages/AddForm.razor]
+[C:/Users/asus/source/repos/GzAmnform/Pages/AddForm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRm9ybS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-765lmi3zjl
 
-[D:/dev7/GzAmnform/Shared/MainLayout.razor]
+[C:/Users/asus/source/repos/GzAmnform/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-qn1uvpbcmp
 
-[D:/dev7/GzAmnform/Shared/NavMenu.razor]
+[C:/Users/asus/source/repos/GzAmnform/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-rtqwtk86yw
 
-[D:/dev7/GzAmnform/Pages/_Host.cshtml]
+[C:/Users/asus/source/repos/GzAmnform/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

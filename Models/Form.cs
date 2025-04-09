@@ -63,9 +63,6 @@ namespace GzAmnform.Models
 		[Required(ErrorMessage = "old_place_duration")]
 		public string old_place_duration { get; set; } = string.Empty;
 
-		[Required(ErrorMessage = "new_key_place is required")]
-		public string new_key_place { get; set; } = string.Empty;
-
 		[Required(ErrorMessage = "old_key_place is required")]
 		public string old_key_place { get; set; } = string.Empty;
 
@@ -185,6 +182,8 @@ namespace GzAmnform.Models
 		[Required(ErrorMessage = "a17 is required")]
 		public string a17 { get; set; } = string.Empty;
 
+		[Required(ErrorMessage = "a18 is required")]
+		public string a18 { get; set; } = string.Empty;
 		public bool deleted { get; set; } = false;
 		public List<RelativeInfo> Relatives { get; set; } = new();
 		public List<SonsInfo> Sons { get; set; } = new();

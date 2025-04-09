@@ -41,10 +41,7 @@
 					<ValidationMessage For="@(() => form.id_number)" />
 				</div>
 
-			</div>
 
-			<!-- Second Row -->
-			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="form_birthdate">تاريخ الولادة</label>
 					<InputDate id="form_birthdate" @bind-Value="form.birthdate" class="form-control"></InputDate>
@@ -62,9 +59,6 @@
 				</div>
 
 
-			</div>
-			<!-- Third Row -->
-			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="form_state">الحالة</label>
 					<InputText id="form_state" @bind-Value="form.state" class="form-control"></InputText>
@@ -80,11 +74,7 @@
 					<InputText id="form_religion" @bind-Value="form.religion" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.religion)" />
 				</div>
-			</div>
 
-				<!--Fourth Row-->
-
-			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="form_bagde_color">تاريخ التخرج</label>
 					<InputDate id="form_grad_year" @bind-Value="form.grad_year" class="form-control"></InputDate>
@@ -101,10 +91,6 @@
 					<ValidationMessage For="@(() => form.phone1)" />
 				</div>
 
-			</div>
-
-
-			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="form_phone2">موبايل 2</label>
 					<InputText id="form_phone2" @bind-Value="form.phone2" class="form-control"></InputText>
@@ -120,11 +106,7 @@
 					<InputText id="form_father_work_old" @bind-Value="form.father_work_old" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.father_work_old)" />
 				</div>
-				
-			</div>
-			<!-- Fourth Row -->
 
-			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="form_mother_name">اسم الأم</label>
 					<InputText id="form_mother_name" @bind-Value="form.mother_name" class="form-control"></InputText>
@@ -141,12 +123,6 @@
 					<ValidationMessage For="@(() => form.wife_name)" />
 				</div>
 
-			</div>
-
-			
-			<!-- Fifth Row -->
-
-			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="form_wife_work">عمل الزوجة</label>
 					<InputText id="form_wife_work" @bind-Value="form.wife_work" class="form-control"></InputText>
@@ -164,14 +140,6 @@
 					<ValidationMessage For="@(() => form.work_duration)" />
 				</div>
 
-				
-
-
-			</div>
-
-			<!-- Sixth Row -->
-
-			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="form_work_place2">مكان العمل السابق</label>
 					<InputText id="form_work_place2" @bind-Value="form.work_place2" class="form-control"></InputText>
@@ -182,10 +150,7 @@
 					<InputText id="form_work_duration2" @bind-Value="form.work_duration2" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.work_duration2)" />
 				</div>
-			</div>
 
-			<!-- Seventh Row -->
-			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="form_place_govern">محافظة الإقامة</label>
 					<InputText id="form_place_govern" @bind-Value="form.place_govern" class="form-control"></InputText>
@@ -203,10 +168,6 @@
 					<ValidationMessage For="@(() => form.place_point)" />
 				</div>
 
-			</div>
-
-			<!-- Eighth Row -->
-			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="form_place_mhala">المحلة</label>
 					<InputText id="form_place_mhala" @bind-Value="form.place_mhala" class="form-control"></InputText>
@@ -222,15 +183,35 @@
 					<InputText id="form_place_dar" @bind-Value="form.place_dar" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.place_dar)" />
 				</div>
-			</div>
 
-			<!-- Ninth a Row -->
-			<div class="row">
+				<div class="col-md-4 mb-3">
+					<label for="form_new_place_duration">مدة الاقامة</label>
+					<InputText id="form_new_place_duration" @bind-Value="form.new_place_duration" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.new_place_duration)" />
+				</div>
+
+				<div class="col-md-4 mb-3">
+					<label for="form_old_place">نوع الملك</label>
+					<InputText id="form_place_type" @bind-Value="form.place_type" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.place_type)" />
+				</div>
+
 				<div class="col-md-4 mb-3">
 					<label for="form_old_place">مكان الاقامة السابق</label>
 					<InputText id="form_old_place" @bind-Value="form.old_place" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.old_place)" />
 				</div>
+				<div class="col-md-4 mb-3">
+					<label for="form_old_key_place">اقرب نقطة دالة </label>
+					<InputText id="form_old_key_place" @bind-Value="form.old_key_place" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.old_key_place)" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="form_old_place_duration">مدة الاقامة</label>
+					<InputText id="form_old_place_duration" @bind-Value="form.old_place_duration" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.old_place_duration)" />
+				</div>
+
 				<div class="col-md-4 mb-3">
 					<label for="form_bagde_color">لون الباج</label>
 					<InputText id="form_bagde_color" @bind-Value="form.bagde_color" class="form-control"></InputText>
@@ -243,9 +224,6 @@
 				</div>
 
 			</div>
-
-			<!-- Ninth b Row -->
-
 
 
 			<h5>أسماء الأبناء</h5>
@@ -277,7 +255,7 @@
 			</div>
 			<button type="button" class="btn btn-warning mb-3" @onclick="AddSon">إضافة إبن</button>
 
-			<h5>السفرات خارج العراق</h5>
+			<h5>السفر خارج العراق</h5>
 			<div class="table-responsive">
 
 			<table class="table table-bordered">
@@ -436,9 +414,14 @@
 			</div>
 
 			<div class="mb-3">
-				<label for="form_a17">هل تعرضت انت او احد افراد عائلتك او اقاربك الى عمل ارهابي؟</label>
+				<label for="form_a17">هل يوجد محكومية او مطلوبية بحق احد الاقارب بتهمة الارهاب؟اذكر التفاصيل</label>
 				<InputText id="form_a17" @bind-Value="form.a17" class="form-control"></InputText>
 				<ValidationMessage For="@(() => form.a17)" />
+			</div>
+			<div class="mb-3">
+				<label for="form_a18">هل تعرضت انت او احد افراد عائلتك او اقاربك الى عمل ارهابي؟</label>
+				<InputText id="form_a18" @bind-Value="form.a18" class="form-control"></InputText>
+				<ValidationMessage For="@(() => form.a18)" />
 			</div>
 		</div>
 
@@ -447,25 +430,7 @@
 		<ValidationSummary />
 	</EditForm>
 
-	@if (!string.IsNullOrEmpty(userMessage))
-	{
-		if (isSuccess)
-		{
-			<MudAlert Severity="Severity.Success">
-				<a>تم خزن الاستمارة بنجاح</a>
-				<a>no: @ddid</a>
-			</MudAlert>
-		}
-		else
-		{
-			<MudAlert Severity="Severity.Error">
-				@userMessage
-			</MudAlert>
-		}
-	}
-
 	
-
 
 </div>
 
@@ -493,11 +458,10 @@
 	{
 		Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 		form.username = UserName;
-		//form.phone1 = (0).ToString();
-		form.phone2 = (0).ToString();
 		AddRelative();
 		AddSon();
 		AddTravel();
+		LoadData();
 	}
 	public void Dispose()
 	{
@@ -634,6 +598,17 @@
 					fields.SetField("22", readForm.work_place2.ToString());
 					fields.SetField("23", readForm.study.ToString());
 					fields.SetField("24", readForm.grad_year.ToString());
+					fields.SetField("25", readForm.birth_place.ToString());
+					fields.SetField("26", readForm.new_place_duration.ToString());
+					fields.SetField("27", readForm.place_point.ToString());
+					fields.SetField("28", readForm.place_type.ToString());
+					fields.SetField("29", readForm.old_place_duration.ToString());
+					fields.SetField("30", readForm.old_key_place.ToString());
+					fields.SetField("30", readForm.old_key_place.ToString());
+					fields.SetField("30", readForm.old_key_place.ToString());
+					fields.SetField("31", readForm.work_duration.ToString());
+					fields.SetField("32", readForm.work_duration2.ToString());
+
 					fields.SetField("34", readForm.father_work.ToString());
 					fields.SetField("33", readForm.father_work.ToString());
 					fields.SetField("35", readForm.mother_name.ToString());
@@ -648,9 +623,9 @@
 					fields.SetField("a5", readForm.a5.ToString());
 					fields.SetField("a6", readForm.a6.ToString());
 					fields.SetField("a7", readForm.a7.ToString());
-					fields.SetField("a8", readForm.a8.ToString());
-					fields.SetField("a9", readForm.a9.ToString());
-					fields.SetField("a10", readForm.a10.ToString());
+					//fields.SetField("a8", readForm.a8.ToString());
+					//fields.SetField("a9", readForm.a9.ToString());
+					//fields.SetField("a10", readForm.a10.ToString());
 					fields.SetField("a11", readForm.a11.ToString());
 					fields.SetField("a12", readForm.a12.ToString());
 					fields.SetField("a13", readForm.a13.ToString());
@@ -658,6 +633,49 @@
 					fields.SetField("a15", readForm.a15.ToString());
 					fields.SetField("a16", readForm.a16.ToString());
 					fields.SetField("a17", readForm.a17.ToString());
+					fields.SetField("a18", readForm.a18.ToString());
+
+					StringBuilder sb = new StringBuilder();
+
+					// الهيدر
+					sb.AppendLine("البلد - التاريخ - العدد - المدة - الغرض");
+
+					// البيانات
+					foreach (var travel in readForm.Travels)
+					{
+						sb.AppendLine($"{travel.CountryName} - " +
+											$"{travel.TravelDate?.ToString("yyyy-MM-dd")} - " +
+											$"{travel.TravelCount} - " +
+											$"{travel.TravelDuration} - " +
+											$"{travel.TravelPorpose}");
+					}
+
+					// ضع الناتج بالحقل A8
+					fields.SetField("a8", sb.ToString());
+
+					StringBuilder sonsBuilder = new StringBuilder();
+					sonsBuilder.AppendLine("الاسم - تاريخ التولد - العمل");
+
+					foreach (var son in readForm.Sons)
+					{
+						sonsBuilder.AppendLine($"{son.Name} - " +
+														$"{son.BirthDate?.ToString("yyyy-MM-dd")} - " +
+														$"{son.Job}");
+					}
+
+					fields.SetField("a9", sonsBuilder.ToString());
+
+					StringBuilder relBuilder = new StringBuilder();
+					relBuilder.AppendLine("الاسم - تاريخ التولد - العمل");
+
+					foreach (var rel in readForm.Relatives)
+					{
+						relBuilder.AppendLine($"{rel.Name} - " +
+													$"{rel.BirthDate?.ToString("yyyy-MM-dd")} - " +
+													$"{rel.Job}");
+					}
+
+					fields.SetField("a10", relBuilder.ToString());
 
 
 					// Flatten the form
@@ -695,13 +713,14 @@
 
 				// Create a QR code image stamp
 				var qrCodeImage = Image.GetInstance(qrCodeImageBytes);
-				qrCodeImage.SetAbsolutePosition(50, 650); // Adjust the position as needed
+				qrCodeImage.SetAbsolutePosition(50, 530); // Adjust the position as needed
 
 				// Add the image stamp to the PDF
 				var contentByte = pdfStamper.GetOverContent(1); // Page number, adjust as needed
 				contentByte.AddImage(qrCodeImage);
 
 				pdfStamper.FormFlattening = true; // Optionally flatten the fields to make them read-only
+				
 				pdfStamper.Close();
 
 				return outputMemoryStream.ToArray();
@@ -768,6 +787,7 @@
 				form.a15 = "لايوجد";
 				form.a16 = "لايوجد";
 				form.a17 = "لايوجد";
+				form.a18 = "لايوجد";
 
 
 

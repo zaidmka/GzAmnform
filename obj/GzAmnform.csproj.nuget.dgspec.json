@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\dev7\\GzAmnform\\GzAmnform.csproj": {}
+    "C:\\Users\\asus\\source\\repos\\GzAmnform\\GzAmnform.csproj": {}
   },
   "projects": {
-    "D:\\dev7\\GzAmnform\\GzAmnform.csproj": {
+    "C:\\Users\\asus\\source\\repos\\GzAmnform\\GzAmnform.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\dev7\\GzAmnform\\GzAmnform.csproj",
+        "projectUniqueName": "C:\\Users\\asus\\source\\repos\\GzAmnform\\GzAmnform.csproj",
         "projectName": "GzAmnform",
-        "projectPath": "D:\\dev7\\GzAmnform\\GzAmnform.csproj",
-        "packagesPath": "C:\\Users\\Fwz\\.nuget\\packages\\",
-        "outputPath": "D:\\dev7\\GzAmnform\\obj\\",
+        "projectPath": "C:\\Users\\asus\\source\\repos\\GzAmnform\\GzAmnform.csproj",
+        "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\asus\\source\\repos\\GzAmnform\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Fwz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -72,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
