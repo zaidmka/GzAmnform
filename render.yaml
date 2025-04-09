@@ -1,0 +1,11 @@
+﻿services:
+  - type: web
+    name: GzAmnform
+    runtime: docker
+    plan: free
+    repo: https://github.com/zaidmka/GzAmnform
+    branch: main
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
