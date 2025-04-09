@@ -12,30 +12,11 @@
 
 <PageTitle>GzOffice</PageTitle>
 <div style="font-family:Cairo;font-weight:700;">
+	<div class="d-flex justify-content-center">
 
-	@if (!string.IsNullOrEmpty(userMessage))
-	{
-		if (isSuccess)
-		{
-			<MudAlert Severity="Severity.Success">
-				<a>تم خزن الاستمارة بنجاح</a>
-				<a>no: @ddid</a>
-			</MudAlert>
 
-		}
-
-		else
-		{
-			<MudAlert Severity="Severity.Error">
-				@userMessage
-			</MudAlert>
-		}
-	}
-
-	<p style="color:red">@message</p>
-
-	<h3 style="font-family:Cairo;">استمارة المقابلة الامنية</h3>
-
+	<h3 style="font-family:Cairo;">استمارة المقابلة الامنية</h3><br/>
+	</div>
 
 	<EditForm Model="form" OnValidSubmit="ViewForm">
 		<DataAnnotationsValidator />
@@ -50,12 +31,12 @@
 
 				</div>
 				<div class="col-md-4 mb-3">
-					<label for="form_name">الاسم</label>
+					<label for="form_name">الاسم الرباعي واللقب</label>
 					<InputText id="form_name" @bind-Value="form.name" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.name)" />
 				</div>
 				<div class="col-md-4 mb-3">
-					<label for="form_id_number">رقم الهوية</label>
+					<label for="form_id_number">رقم البطاقة الموحدة</label>
 					<InputNumber id="form_id_number" @bind-Value="form.id_number" class="form-control"></InputNumber>
 					<ValidationMessage For="@(() => form.id_number)" />
 				</div>
@@ -65,9 +46,69 @@
 			<!-- Second Row -->
 			<div class="row">
 				<div class="col-md-4 mb-3">
-					<label for="form_entity">الجهة</label>
+					<label for="form_birthdate">تاريخ الولادة</label>
+					<InputDate id="form_birthdate" @bind-Value="form.birthdate" class="form-control"></InputDate>
+					<ValidationMessage For="@(() => form.birthdate)" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="form_birth_place1">محل الولادة</label>
+					<InputText id="form_birth_place" @bind-Value="form.birth_place" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.birth_place)" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="form_study">التحصيل الدراسي</label>
+					<InputText id="form_study" @bind-Value="form.study" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.study)" />
+				</div>
+
+
+			</div>
+			<!-- Third Row -->
+			<div class="row">
+				<div class="col-md-4 mb-3">
+					<label for="form_state">الحالة</label>
+					<InputText id="form_state" @bind-Value="form.state" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.state)" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="form_nationalism">الديانة</label>
+					<InputText id="form_nationalism" @bind-Value="form.nationalism" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.nationalism)" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="form_religion">القومية</label>
+					<InputText id="form_religion" @bind-Value="form.religion" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.religion)" />
+				</div>
+			</div>
+
+				<!--Fourth Row-->
+
+			<div class="row">
+				<div class="col-md-4 mb-3">
+					<label for="form_bagde_color">تاريخ التخرج</label>
+					<InputDate id="form_grad_year" @bind-Value="form.grad_year" class="form-control"></InputDate>
+					<ValidationMessage For="@(() => form.grad_year)" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="form_entity">جهة العمل</label>
 					<InputText id="form_entity" @bind-Value="form.entity" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.entity)" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="form_phone1">موبايل</label>
+					<InputNumber id="form_phone1" @bind-Value="form.phone1" class="form-control"></InputNumber>
+					<ValidationMessage For="@(() => form.phone1)" />
+				</div>
+
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-4 mb-3">
+					<label for="form_phone2">موبايل 2</label>
+					<InputText id="form_phone2" @bind-Value="form.phone2" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.phone2)" />
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="form_father_work">عمل الأب</label>
@@ -75,14 +116,20 @@
 					<ValidationMessage For="@(() => form.father_work)" />
 				</div>
 				<div class="col-md-4 mb-3">
+					<label for="form_father_work_old">عمل الاب السابق</label>
+					<InputText id="form_father_work_old" @bind-Value="form.father_work_old" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.father_work_old)" />
+				</div>
+				
+			</div>
+			<!-- Fourth Row -->
+
+			<div class="row">
+				<div class="col-md-4 mb-3">
 					<label for="form_mother_name">اسم الأم</label>
 					<InputText id="form_mother_name" @bind-Value="form.mother_name" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.mother_name)" />
 				</div>
-			</div>
-
-			<!-- Third Row -->
-			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="form_mother_work">عمل الأم</label>
 					<InputText id="form_mother_work" @bind-Value="form.mother_work" class="form-control"></InputText>
@@ -93,72 +140,47 @@
 					<InputText id="form_wife_name" @bind-Value="form.wife_name" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.wife_name)" />
 				</div>
+
+			</div>
+
+			
+			<!-- Fifth Row -->
+
+			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="form_wife_work">عمل الزوجة</label>
 					<InputText id="form_wife_work" @bind-Value="form.wife_work" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.wife_work)" />
 				</div>
 
-			</div>
-
-			<!-- Fourth Row -->
-			<div class="row">
 				<div class="col-md-4 mb-3">
-					<label for="form_birthdate">تاريخ الولادة</label>
-					<InputDate id="form_birthdate" @bind-Value="form.birthdate" class="form-control"></InputDate>
-					<ValidationMessage For="@(() => form.birthdate)" />
+					<label for="form_work_place">مكان العمل الحالي</label>
+					<InputText id="form_work_place" @bind-Value="form.work_place" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.work_place)" />
 				</div>
 				<div class="col-md-4 mb-3">
-					<label for="form_study">الدراسة</label>
-					<InputText id="form_study" @bind-Value="form.study" class="form-control"></InputText>
-					<ValidationMessage For="@(() => form.study)" />
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="form_bagde_color">تاريخ التخرج</label>
-					<InputDate id="form_grad_year" @bind-Value="form.grad_year" class="form-control"></InputDate>
-					<ValidationMessage For="@(() => form.grad_year)" />
+					<label for="form_work_duration">مدة العمل الحالي</label>
+					<InputText id="form_work_duration" @bind-Value="form.work_duration" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.work_duration)" />
 				</div>
 
+				
 
-
-			</div>
-
-			<!-- Fifth Row -->
-			<div class="row">
-				<div class="col-md-4 mb-3">
-					<label for="form_reviewdate">تاريخ المقابلة</label>
-					<InputDate id="form_reviewdate" @bind-Value="form.review_date" class="form-control"></InputDate>
-					<ValidationMessage For="@(() => form.review_date)" />
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="form_info_book">رقم الكتاب</label>
-					<InputNumber id="form_info_book" @bind-Value="form.info_book" class="form-control"></InputNumber>
-					<ValidationMessage For="@(() => form.info_book)" />
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="form_seq">تسلسل</label>
-					<InputNumber id="form_seq" @bind-Value="form.seq" class="form-control"></InputNumber>
-					<ValidationMessage For="@(() => form.seq)" />
-				</div>
 
 			</div>
 
 			<!-- Sixth Row -->
+
 			<div class="row">
 				<div class="col-md-4 mb-3">
-					<label for="form_state">الحالة</label>
-					<InputText id="form_state" @bind-Value="form.state" class="form-control"></InputText>
-					<ValidationMessage For="@(() => form.state)" />
+					<label for="form_work_place2">مكان العمل السابق</label>
+					<InputText id="form_work_place2" @bind-Value="form.work_place2" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.work_place2)" />
 				</div>
 				<div class="col-md-4 mb-3">
-					<label for="form_nationalism">الجنسية</label>
-					<InputText id="form_nationalism" @bind-Value="form.nationalism" class="form-control"></InputText>
-					<ValidationMessage For="@(() => form.nationalism)" />
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="form_religion">القومية</label>
-					<InputText id="form_religion" @bind-Value="form.religion" class="form-control"></InputText>
-					<ValidationMessage For="@(() => form.religion)" />
+					<label for="form_work_duration2">مدة العمل السابق</label>
+					<InputText id="form_work_duration2" @bind-Value="form.work_duration2" class="form-control"></InputText>
+					<ValidationMessage For="@(() => form.work_duration2)" />
 				</div>
 			</div>
 
@@ -224,25 +246,69 @@
 
 			<!-- Ninth b Row -->
 
-			<div class="row">
 
-				<div class="col-md-4 mb-3">
-					<label for="form_work_place">مكان العمل</label>
-					<InputText id="form_work_place" @bind-Value="form.work_place" class="form-control"></InputText>
-					<ValidationMessage For="@(() => form.work_place)" />
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="form_work_place2">مكان العمل السابق</label>
-					<InputText id="form_work_place2" @bind-Value="form.work_place2" class="form-control"></InputText>
-					<ValidationMessage For="@(() => form.work_place2)" />
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="form_phone1">موبايل</label>
-					<InputNumber id="form_phone1" @bind-Value="form.phone1" class="form-control"></InputNumber>
-					<ValidationMessage For="@(() => form.phone1)" />
-				</div>
+
+			<h5>أسماء الأبناء</h5>
+			<div class="table-responsive">
+
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>الاسم</th>
+						<th>تاريخ التولد</th>
+						<th>العمل</th>
+						<th>حذف</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var son in form.Sons)
+					{
+						<tr>
+							<td><InputText @bind-Value="son.Name" class="form-control" /></td>
+							<td><InputDate @bind-Value="son.BirthDate" class="form-control" /></td>
+							<td><InputText @bind-Value="son.Job" class="form-control" /></td>
+							<td>
+								<button type="button" class="btn btn-danger" @onclick="() => RemoveSon(son)">X</button>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
 			</div>
+			<button type="button" class="btn btn-warning mb-3" @onclick="AddSon">إضافة إبن</button>
 
+			<h5>السفرات خارج العراق</h5>
+			<div class="table-responsive">
+
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>الدولة</th>
+						<th>تاريخ السفر</th>
+						<th>عدد السفرات</th>
+						<th>مدة السفر</th>
+						<th>الغرض من السفر</th>
+						<th>حذف</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var travel in form.Travels)
+					{
+						<tr>
+							<td><InputText @bind-Value="travel.CountryName" class="form-control" /></td>
+							<td><InputDate @bind-Value="travel.TravelDate" class="form-control" /></td>
+							<td><InputNumber @bind-Value="travel.TravelCount" class="form-control" /></td>
+							<td><InputText @bind-Value="travel.TravelDuration" class="form-control" /></td>
+							<td><InputText @bind-Value="travel.TravelPorpose" class="form-control" /></td>
+							<td>
+								<button type="button" class="btn btn-danger" @onclick="() => RemoveTravel(travel)">X</button>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+			</div>
+			<button type="button" class="btn btn-warning mb-3" @onclick="AddTravel">إضافة سفر</button>
 
 			<div class="mb-3">
 				<label for="form_a1">هل يوجد لديك احتجاز او توقيف لدى اي جهة امنية عراقية سابقاً؟</label>
@@ -272,6 +338,36 @@
 				<InputText id="form_a5" @bind-Value="form.a5" class="form-control"></InputText>
 				<ValidationMessage For="@(() => form.a5)" />
 			</div>
+
+			<h5>أسماء الاخوة الاشقاء والغير اشقاء</h5>
+			<div class="table-responsive">
+
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>الاسم</th>
+						<th>تاريخ التولد</th>
+						<th>العمل</th>
+						<th>حذف</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var relative in form.Relatives)
+					{
+						<tr>
+							<td><InputText @bind-Value="relative.Name" class="form-control" /></td>
+							<td><InputDate @bind-Value="relative.BirthDate" class="form-control" /></td>
+							<td><InputText @bind-Value="relative.Job" class="form-control" /></td>
+							<td>
+								<button type="button" class="btn btn-danger" @onclick="() => RemoveRelative(relative)">X</button>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+			</div>
+			<button type="button" class="btn btn-warning mb-3" @onclick="AddRelative">إضافة قيد</button>
+
 
 			<div class="mb-3">
 				<label for="form_a6">هل لديك اقارب يعملون او يسكنون داخل المنطقة الخضراء؟</label>
@@ -368,30 +464,11 @@
 		}
 	}
 
-	@if (!string.IsNullOrEmpty(AppoMessage))
-	{
-		if (isSuccessAppo)
-		{
-			<MudAlert Severity="Severity.Success">
-				<a>تم خزن الحركة بنجاح</a>
-			</MudAlert>
-		}
-		else
-		{
-			<MudAlert Severity="Severity.Error">
-				@AppoMessage
-			</MudAlert>
-		}
-	}
-	}
+	
 
 
 </div>
-@if (!string.IsNullOrEmpty(pdfBase64))
-{
-	<iframe src="data:application/pdf;base64,@pdfBase64"></iframe>
-}
-<button class="btn btn-primary" @onclick="test">click</button>
+
 @code {
 	bool authrized = false;
 	private string UserName = "Guest";
@@ -415,11 +492,12 @@
 	protected override async Task OnInitializedAsync()
 	{
 		Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-		form.review_date = DateOnly.FromDateTime(DateTime.Today);
 		form.username = UserName;
 		//form.phone1 = (0).ToString();
 		form.phone2 = (0).ToString();
-
+		AddRelative();
+		AddSon();
+		AddTravel();
 	}
 	public void Dispose()
 	{
@@ -428,10 +506,7 @@
 	{
 
 	}
-	public void test()
-	{
-		Console.Write("Test");
-	}
+	
 	async Task ViewForm()
 	{
 
@@ -507,7 +582,6 @@
 			Console.WriteLine("pdfBase64:   ", pdfBase64);
 			var base64Url = $"data:application/pdf;base64,{pdfBase64}";
 
-			// شغّل JavaScript حتى يفتح التبويب الجديد
 			await JSRuntime.InvokeVoidAsync("openPdfFromBase64", pdfBase64);
 
 
@@ -541,10 +615,10 @@
 					fields.SetField("2", readForm.bagde_color.ToString());
 					fields.SetField("3", readForm.name.ToString());
 					fields.SetField("4", readForm.entity.ToString());
-					fields.SetField("5", readForm.id.ToString());
-					fields.SetField("6", readForm.info_book.ToString());
-					fields.SetField("7", readForm.seq.ToString());
-					fields.SetField("8", readForm.review_date.ToString());
+					//fields.SetField("5", readForm.id.ToString());
+					//fields.SetField("6", readForm.info_book.ToString());
+					//fields.SetField("7", readForm.seq.ToString());
+					//fields.SetField("8", readForm.review_date.ToString());
 					fields.SetField("12", readForm.name.ToString());
 					fields.SetField("13", readForm.birthdate.ToString());
 					fields.SetField("14", readForm.state.ToString());
@@ -657,5 +731,52 @@
 
 		return null;
 	}
+	void AddRelative()
+	{
+		form.Relatives.Add(new RelativeInfo());
+	}
 
+	void RemoveRelative(RelativeInfo item)
+	{
+		form.Relatives.Remove(item);
+	}
+	void AddSon() => form.Sons.Add(new SonsInfo());
+	void RemoveSon(SonsInfo son) => form.Sons.Remove(son);
+
+	void AddTravel() => form.Travels.Add(new TravelInfo());
+	void RemoveTravel(TravelInfo travel) => form.Travels.Remove(travel);
+
+	public async Task LoadData()
+	{
+		try
+		{
+			
+				form.a1 = "لايوجد";
+				form.a2 = "لايوجد";
+				form.a3 = "لايوجد";
+				form.a4 = "لايوجد";
+				form.a5 = "لايوجد";
+				form.a6 = "لايوجد";
+				form.a7 = "لايوجد";
+				form.a8 = "لايوجد";
+				form.a9 = "لايوجد";
+				form.a10 = "لايوجد";
+				form.a11 = "لايوجد";
+				form.a12 = "لايوجد";
+				form.a13 = "لايوجد";
+				form.a14 = "لايوجد";
+				form.a15 = "لايوجد";
+				form.a16 = "لايوجد";
+				form.a17 = "لايوجد";
+
+
+
+
+	
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine("An error occurred: " + ex.Message);
+		}
+	}
 }

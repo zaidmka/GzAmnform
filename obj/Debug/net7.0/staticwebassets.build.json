@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KswAtV8Ayuge561JswD63NNuEEkjJxzB4RTbnQs0w7c=",
+  "Hash": "uIxIU+oEAgAeGXpzuUpwhT3y59nuSS5J5nWwNRzKsfw=",
   "Source": "GzAmnform",
   "BasePath": "_content/GzAmnform",
   "Mode": "Default",
@@ -321,6 +321,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "D:\\dev7\\GzAmnform\\wwwroot\\logo150.png",
+      "SourceId": "GzAmnform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\dev7\\GzAmnform\\wwwroot\\",
+      "BasePath": "_content/GzAmnform",
+      "RelativePath": "logo150.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\logo150.png"
     }
   ]
 }
