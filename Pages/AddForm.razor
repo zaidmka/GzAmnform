@@ -1,6 +1,7 @@
 ﻿@page "/"
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
+@inject ILogger<AddForm> Logger
 
 @implements IDisposable
 @using System.Net.Http.Headers
@@ -227,9 +228,8 @@
 
 
 			<h5>أسماء الأبناء</h5>
-			<div class="table-responsive">
-
-			<table class="table table-bordered">
+			<div class="table-responsive" style="overflow-x:auto; min-width: 600px;">
+				<table class="table table-bordered" style="min-width: 700px;">
 				<thead>
 					<tr>
 						<th>الاسم</th>
@@ -256,9 +256,8 @@
 			<button type="button" class="btn btn-warning mb-3" @onclick="AddSon">إضافة إبن</button>
 
 			<h5>السفر خارج العراق</h5>
-			<div class="table-responsive">
-
-			<table class="table table-bordered">
+			<div class="table-responsive" style="overflow-x:auto; min-width: 600px;">
+				<table class="table table-bordered" style="min-width: 700px;">
 				<thead>
 					<tr>
 						<th>الدولة</th>
@@ -318,9 +317,9 @@
 			</div>
 
 			<h5>أسماء الاخوة الاشقاء والغير اشقاء</h5>
-			<div class="table-responsive">
+			<div class="table-responsive" style="overflow-x:auto; min-width: 600px;">
 
-			<table class="table table-bordered">
+				<table class="table table-bordered" style="min-width: 700px;">
 				<thead>
 					<tr>
 						<th>الاسم</th>
@@ -454,10 +453,13 @@
 	private string pdfBase64;
 	private int zkey;
 	private string message;
+	private string logMessage;
 	protected override async Task OnInitializedAsync()
 	{
 		Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 		form.username = UserName;
+		form.birthdate = DateOnly.FromDateTime(DateTime.Now);
+		form.grad_year = DateOnly.FromDateTime(DateTime.Now);
 		AddRelative();
 		AddSon();
 		AddTravel();
@@ -470,7 +472,7 @@
 	{
 
 	}
-	
+
 	async Task ViewForm()
 	{
 
@@ -515,7 +517,6 @@
 			{
 				pdfBytes = FillFormField(pdfBytes, readform);
 				Console.WriteLine("FillFormField Okay");
-
 			}
 			catch (Exception ex)
 			{
@@ -545,6 +546,13 @@
 			pdfBase64 = Convert.ToBase64String(pdfBytes);
 			Console.WriteLine("pdfBase64:   ", pdfBase64);
 			var base64Url = $"data:application/pdf;base64,{pdfBase64}";
+			using (StreamWriter logWriter = new StreamWriter("log.txt", true)) // true to append to the file if it exists
+			{
+				logMessage = $"{DateTime.Now} : new success qr code : {qrcodetext}";
+				await logWriter.WriteLineAsync(logMessage);
+
+
+			}
 
 			await JSRuntime.InvokeVoidAsync("openPdfFromBase64", pdfBase64);
 

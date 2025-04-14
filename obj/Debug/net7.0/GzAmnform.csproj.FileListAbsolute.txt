@@ -95,3 +95,17 @@ C:\Users\asus\source\repos\GzAmnform\obj\Debug\net7.0\refint\GzAmnform.dll
 C:\Users\asus\source\repos\GzAmnform\obj\Debug\net7.0\GzAmnform.pdb
 C:\Users\asus\source\repos\GzAmnform\obj\Debug\net7.0\GzAmnform.genruntimeconfig.cache
 C:\Users\asus\source\repos\GzAmnform\obj\Debug\net7.0\ref\GzAmnform.dll
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\arial.ttf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\fillable - Copy.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\fillable.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\fillable1.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\fillable2.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\fillable3.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\fillablearabic.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\fillablenewok.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\fillableqwe.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\fillableworking.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\q.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\q1.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\PDF\qwe.pdf
+C:\Users\asus\source\repos\GzAmnform\bin\Debug\net7.0\arial.ttf
