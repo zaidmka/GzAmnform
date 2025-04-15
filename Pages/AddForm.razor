@@ -425,11 +425,34 @@
 			</div>
 		</div>
 
+		@if (IsLoading)
+		{
+			<div class="text-center mb-3">
+				<div class="spinner-border text-primary" role="status">
+					<span class="visually-hidden">جاري التحميل...</span>
+				</div>
+				<p>جاري تجهيز الاستمارة، يرجى الانتظار...</p>
+			</div>
+		}
+		<button type="submit"
+				class="btn btn-primary float-end"
+				disabled="@IsLoading">
+			@if (IsLoading)
+			{
+				<text>
+					<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+					جاري التحميل
+				</text>
+			}
+			else
+			{
+				<text>طبع الاستمارة</text>
+			}
+		</button>
 
-		<button type="submit" class="btn btn-primary float-end">طبع الاستمارة</button>
 		<ValidationSummary />
 	</EditForm>
-
+	
 	
 
 </div>
@@ -443,7 +466,7 @@
 	private string AppoMessage = string.Empty;
 	private bool isSuccessAppo;
 	string btnText = "";
-	bool IsLoading = true;
+	bool IsLoading = false;
 	bool deleted = false;
 	string msg = "Loading ...";
 	private bool DisableAddUpdateButon = false;
@@ -476,95 +499,56 @@
 
 	async Task ViewForm()
 	{
-
-		Console.Write("ViewForm");
-
-
-		var filePath = Path.Combine("PDF", "fillable.pdf");
-		if (!System.IO.File.Exists(filePath))
-		{
-			Console.WriteLine("File not found");
-			return;
-		}
-		var fileInfo = new FileInfo(filePath);
-		Form readform;
-		if (!fileInfo.Exists)
-		{
-			Console.WriteLine("File not Found");
-		}
-
 		try
 		{
+			IsLoading = true;
+			StateHasChanged(); 
 
-			// Read the existing PDF as a byte array
+			Console.Write("ViewForm");
+
+			var filePath = Path.Combine("PDF", "fillable.pdf");
+			if (!System.IO.File.Exists(filePath))
+			{
+				Console.WriteLine("File not found");
+				return;
+			}
 
 			byte[] pdfBytes = System.IO.File.ReadAllBytes(filePath);
-
 			if (pdfBytes == null || pdfBytes.Length == 0)
 			{
 				Console.WriteLine("Failed to read PDF file.");
-
 			}
 
-
-			readform = form;
+			var readform = form;
 			readform.id = 1;
 
-			Console.WriteLine("form:     " + form.id);
-			string qrcodetext = $"{readform.name}<{readform.id}<{readform.doc_no}";
-			Console.WriteLine("qrcodetext:     " + qrcodetext);
-
-			try
-			{
-				pdfBytes = FillFormField(pdfBytes, readform);
-				Console.WriteLine("FillFormField Okay");
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"Error filling PDF: {ex.Message}");
-
-
-			}
-			try
-			{
-
-
-				pdfBytes = FillPdfFormFieldsWithQRCode(pdfBytes, qrcodetext);
-				if (pdfBytes == null || pdfBytes.Length == 0)
-				{
-					Console.WriteLine("Error QR after filling form fields." + readform);
-
-				}
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"Error filling QR CODE: {ex.Message}");
-
-
-			}
-			//Return the filled PDF as a file to the client
+			string qrcodetext = $"{readform.name}<{readform.work_place}<{readform.doc_no}";
+			pdfBytes = FillFormField(pdfBytes, readform);
+			pdfBytes = FillPdfFormFieldsWithQRCode(pdfBytes, qrcodetext);
 
 			pdfBase64 = Convert.ToBase64String(pdfBytes);
-			Console.WriteLine("pdfBase64:   ", pdfBase64);
 			var base64Url = $"data:application/pdf;base64,{pdfBase64}";
-			using (StreamWriter logWriter = new StreamWriter("log.txt", true)) // true to append to the file if it exists
+
+			using (StreamWriter logWriter = new StreamWriter("log.txt", true))
 			{
 				logMessage = $"{DateTime.Now} : new success qr code : {qrcodetext}";
 				await logWriter.WriteLineAsync(logMessage);
-
-
 			}
 
+			// استدعاء فتح الاستمارة بعد انتهاء المعالجة
 			await JSRuntime.InvokeVoidAsync("openPdfFromBase64", pdfBase64);
-
-
 		}
 		catch (Exception ex)
 		{
 			Console.WriteLine($"Error OUT: {ex.Message}");
-
+		}
+		finally
+		{
+			IsLoading = false;
+			StateHasChanged(); 
 		}
 	}
+
 
 	public static byte[] FillFormField(byte[] pdfBytes, Form readForm)
 	{
