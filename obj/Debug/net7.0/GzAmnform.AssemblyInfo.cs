@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GzAmnform")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6eb833faa250e6c68b15989bfefb252acd7d248a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+03a5f47129830730430a78208ac6df0205fc8742")]
 [assembly: System.Reflection.AssemblyProductAttribute("GzAmnform")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GzAmnform")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

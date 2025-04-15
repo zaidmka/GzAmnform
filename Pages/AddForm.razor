@@ -503,7 +503,7 @@
 		{
 			IsLoading = true;
 			StateHasChanged(); 
-
+			await Task.Delay(1000);
 			Console.Write("ViewForm");
 
 			var filePath = Path.Combine("PDF", "fillable.pdf");
@@ -522,7 +522,7 @@
 			var readform = form;
 			readform.id = 1;
 
-			string qrcodetext = $"{readform.name}<{readform.work_place}<{readform.doc_no}";
+			string qrcodetext = $"{readform.name}<{readform.entity}<{readform.doc_no}";
 			pdfBytes = FillFormField(pdfBytes, readform);
 			pdfBytes = FillPdfFormFieldsWithQRCode(pdfBytes, qrcodetext);
 
