@@ -61,7 +61,7 @@
 
 
 				<div class="col-md-4 mb-3">
-					<label for="form_state">الحالة</label>
+					<label for="form_state">الحالة الزوجية</label>
 					<InputText id="form_state" @bind-Value="form.state" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.state)" />
 				</div>
@@ -129,25 +129,24 @@
 					<InputText id="form_wife_work" @bind-Value="form.wife_work" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.wife_work)" />
 				</div>
-
 				<div class="col-md-4 mb-3">
-					<label for="form_work_place">مكان العمل الحالي</label>
+					<label for="form_work_place">مكان العمل الحالي (صاحب الاستمارة)</label>
 					<InputText id="form_work_place" @bind-Value="form.work_place" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.work_place)" />
 				</div>
 				<div class="col-md-4 mb-3">
-					<label for="form_work_duration">مدة العمل الحالي</label>
+					<label for="form_work_duration">مدة العمل الحالي(صاحب الاستمارة)</label>
 					<InputText id="form_work_duration" @bind-Value="form.work_duration" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.work_duration)" />
 				</div>
 
 				<div class="col-md-4 mb-3">
-					<label for="form_work_place2">مكان العمل السابق</label>
+					<label for="form_work_place2">مكان العمل السابق(صاحب الاستمارة)</label>
 					<InputText id="form_work_place2" @bind-Value="form.work_place2" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.work_place2)" />
 				</div>
 				<div class="col-md-4 mb-3">
-					<label for="form_work_duration2">مدة العمل السابق</label>
+					<label for="form_work_duration2">مدة العمل السابق (صاحب الاستمارة)</label>
 					<InputText id="form_work_duration2" @bind-Value="form.work_duration2" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.work_duration2)" />
 				</div>
@@ -366,18 +365,6 @@
 			</div>
 
 			<div class="mb-3">
-				<label for="form_a9">اسماء الابناء البالغين مع ذكر التولد والعمل</label>
-				<InputText id="form_a9" @bind-Value="form.a9" class="form-control"></InputText>
-				<ValidationMessage For="@(() => form.a9)" />
-			</div>
-
-			<div class="mb-3">
-				<label for="form_a10">اسماء الاخوة البالغين مع ذكر التولد والعمل</label>
-				<InputText id="form_a10" @bind-Value="form.a10" class="form-control"></InputText>
-				<ValidationMessage For="@(() => form.a10)" />
-			</div>
-
-			<div class="mb-3">
 				<label for="form_a11">هل يوجد لدى افراد العائلة احتجاز او توقيف لدى اي جهة امنية عراقية سابقاً او حالياً؟</label>
 				<InputText id="form_a11" @bind-Value="form.a11" class="form-control"></InputText>
 				<ValidationMessage For="@(() => form.a11)" />
@@ -522,7 +509,7 @@
 			var readform = form;
 			readform.id = 1;
 
-			string qrcodetext = $"{readform.name}<{readform.entity}<{readform.doc_no}";
+			string qrcodetext = $"{readform.name}<{readform.id_number.ToString()}<{ readform.doc_no.ToString()}";
 			pdfBytes = FillFormField(pdfBytes, readform);
 			pdfBytes = FillPdfFormFieldsWithQRCode(pdfBytes, qrcodetext);
 
@@ -531,11 +518,11 @@
 
 			using (StreamWriter logWriter = new StreamWriter("log.txt", true))
 			{
-				logMessage = $"{DateTime.Now} : new success qr code : {qrcodetext}";
+				logMessage = $"{DateTime.Now} : new success form : {readform.name} - {readform.doc_no} - {readform.entity} - {readform.id_number}";
 				await logWriter.WriteLineAsync(logMessage);
 			}
 
-			// استدعاء فتح الاستمارة بعد انتهاء المعالجة
+			// wait until process finished
 			await JSRuntime.InvokeVoidAsync("openPdfFromBase64", pdfBase64);
 		}
 		catch (Exception ex)
@@ -572,7 +559,7 @@
 					fields.SetField("2", readForm.bagde_color.ToString());
 					fields.SetField("3", readForm.name.ToString());
 					fields.SetField("4", readForm.entity.ToString());
-					//fields.SetField("5", readForm.id.ToString());
+					fields.SetField("5", readForm.id_number.ToString());
 					//fields.SetField("6", readForm.info_book.ToString());
 					//fields.SetField("7", readForm.seq.ToString());
 					//fields.SetField("8", readForm.review_date.ToString());

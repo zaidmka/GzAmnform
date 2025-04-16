@@ -21,6 +21,9 @@
 		</Content>
 	</ItemGroup>
 	<ItemGroup>
+	  <None Remove="PDF\fillable.pdf" />
+	</ItemGroup>
+	<ItemGroup>
 		<Content Include="arial.ttf">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
