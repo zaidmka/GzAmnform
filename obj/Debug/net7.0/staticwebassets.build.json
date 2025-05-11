@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TPRyv9zrvIyxkpFP4/EyQ58PMVtMrChaigxj4M9t+lc=",
+  "Hash": "TVQ+jnyE9HtDVcJs+rEwCxrkTOoDBuuupWgdkhvdZww=",
   "Source": "GzAmnform",
   "BasePath": "_content/GzAmnform",
   "Mode": "Default",
@@ -357,6 +357,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\asus\\source\\repos\\GzAmnform\\wwwroot\\favicon1.png",
+      "SourceId": "GzAmnform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\asus\\source\\repos\\GzAmnform\\wwwroot\\",
+      "BasePath": "_content/GzAmnform",
+      "RelativePath": "favicon1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\favicon1.png"
     },
     {
       "Identity": "C:\\Users\\asus\\source\\repos\\GzAmnform\\wwwroot\\logo150.png",

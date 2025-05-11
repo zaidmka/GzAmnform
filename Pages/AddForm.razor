@@ -219,7 +219,7 @@
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="form_passport_no">رقم جواز السفر - ان وجد</label>
-					<InputNumber id="form_passport_no" @bind-Value="form.passport_no" class="form-control"></InputNumber>
+					<InputText id="form_passport_no" @bind-Value="form.passport_no" class="form-control"></InputText>
 					<ValidationMessage For="@(() => form.passport_no)" />
 				</div>
 
@@ -358,11 +358,6 @@
 				<ValidationMessage For="@(() => form.a7)" />
 			</div>
 
-			<div class="mb-3">
-				<label for="form_a8">هل سافرت خارج العراق؟ اذكر الدولة والسنة والغرض من السفر</label>
-				<InputText id="form_a8" @bind-Value="form.a8" class="form-control"></InputText>
-				<ValidationMessage For="@(() => form.a8)" />
-			</div>
 
 			<div class="mb-3">
 				<label for="form_a11">هل يوجد لدى افراد العائلة احتجاز او توقيف لدى اي جهة امنية عراقية سابقاً او حالياً؟</label>
@@ -428,14 +423,22 @@
 			{
 				<text>
 					<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-					جاري التحميل
+					جاري التحضير
 				</text>
 			}
 			else
 			{
-				<text>طبع الاستمارة</text>
+				<text>تهيئة الاستمارة</text>
 			}
 		</button>
+
+		<div class="d-flex justify-content-center">
+			<button type="button" class="btn btn-success" id="openPdfBtn" onclick="openStoredPdf()" disable style="@GetOpenPdfStyle()">
+				طبع الاستمارة
+			</button>
+		</div>
+
+
 
 		<ValidationSummary />
 	</EditForm>
@@ -445,6 +448,8 @@
 </div>
 
 @code {
+	bool ShowOpenPdfButton = false;
+	string GetOpenPdfStyle() => ShowOpenPdfButton ? "display:inline-block;" : "display:none;";
 	bool authrized = false;
 	private string UserName = "Guest";
 	[Parameter]
@@ -463,8 +468,8 @@
 	private Form data;
 	private string pdfBase64;
 	private int zkey;
-	private string message;
-	private string logMessage;
+	private string message=string.Empty;
+	private string logMessage=string.Empty;
 	protected override async Task OnInitializedAsync()
 	{
 		Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -523,7 +528,17 @@
 			}
 
 			// wait until process finished
-			await JSRuntime.InvokeVoidAsync("openPdfFromBase64", pdfBase64);
+			//await JSRuntime.InvokeVoidAsync("openPdfFromBase64", pdfBase64);
+
+			//store the pdfBase64 to and prepare it to open in another buttom
+			await JSRuntime.InvokeVoidAsync("storePdfForLater", pdfBase64);
+
+			//show the button after press the prepare for second time
+			await JSRuntime.InvokeVoidAsync("showOpenPdfBtn");
+
+			ShowOpenPdfButton = true;
+			StateHasChanged();
+
 		}
 		catch (Exception ex)
 		{

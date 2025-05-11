@@ -48,5 +48,43 @@
             window.open(blobUrl, '_blank');
         }
     </script>
+    <script>
+        let storedBase64 = null;
+
+        window.storePdfForLater = function (base64) {
+            storedBase64 = base64;
+            document.getElementById("openPdfBtn").disabled = false;
+        };
+
+        function openStoredPdf() {
+            if (!storedBase64) {
+                alert("الاستمارة غير جاهزة بعد.");
+                return;
+            }
+
+            const byteCharacters = atob(storedBase64);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray], { type: 'application/pdf' });
+            const blobUrl = URL.createObjectURL(blob);
+            window.open(blobUrl, '_blank');
+            // ✅ Hide the button after printing
+
+            document.getElementById("openPdfBtn").style.display = "none";
+
+
+        }
+        window.showOpenPdfBtn = function () {
+            const btn = document.getElementById('openPdfBtn');
+            if (btn) {
+                btn.style.display = 'inline-block';
+            }
+        };
+    </script>
+
 </body>
 </html>

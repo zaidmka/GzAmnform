@@ -129,7 +129,7 @@ namespace GzAmnform.Models
 		[Required(ErrorMessage = "old_place is required")]
 
 		public string old_place { get; set; } = string.Empty;
-		public int? passport_no { get; set; }
+		public string? passport_no { get; set; } = string.Empty;
 
 		[Required(ErrorMessage = "a1 is required")]
 		public string a1 { get; set; } = string.Empty;
