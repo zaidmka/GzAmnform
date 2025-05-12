@@ -1,0 +1,24 @@
+﻿<MudDialog>
+	<DialogContent>
+		<div style="font-family:Cairo;font-size:18px;">
+			<div style="display: flex; align-items: center; justify-content: center;">
+				<img src="9318688.jpg" alt="Coat of Arms of Iraq" width="200" />
+			</div>
+
+			<p>حدث خطأ ما</p>
+			<p>الرجاء التأكد من رقم الحفظ وحجز المقابلة من المخول</p>
+		</div>
+	</DialogContent>
+	<DialogActions>
+		<MudButton Style="font-family:Cairo;font-size:16px;" Color="Color.Error" Variant="Variant.Filled" OnClick="Submit">Okay</MudButton>
+	</DialogActions>
+</MudDialog>
+
+
+
+@code {
+	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+	void Submit() => MudDialog.Close(DialogResult.Ok(true));
+	void Cancel() => MudDialog.Cancel();
+}

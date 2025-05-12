@@ -2,10 +2,12 @@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
 @inject ILogger<AddForm> Logger
+@inject IDialogService DialogService
 
 @implements IDisposable
 @using System.Net.Http.Headers
 @using System.Text;
+@using GzAmnform.Shared
 @using iTextSharp.text.pdf;
 @using QRCoder;
 @using iTextSharp.text;
@@ -495,7 +497,7 @@
 		{
 			IsLoading = true;
 			StateHasChanged(); 
-			await Task.Delay(1000);
+			//await Task.Delay(1000);
 			Console.Write("ViewForm");
 
 			var filePath = Path.Combine("PDF", "fillable.pdf");
@@ -531,13 +533,27 @@
 			//await JSRuntime.InvokeVoidAsync("openPdfFromBase64", pdfBase64);
 
 			//store the pdfBase64 to and prepare it to open in another buttom
-			await JSRuntime.InvokeVoidAsync("storePdfForLater", pdfBase64);
+			//await JSRuntime.InvokeVoidAsync("storePdfForLater", pdfBase64);
 
 			//show the button after press the prepare for second time
-			await JSRuntime.InvokeVoidAsync("showOpenPdfBtn");
+			//await JSRuntime.InvokeVoidAsync("showOpenPdfBtn");
 
-			ShowOpenPdfButton = true;
-			StateHasChanged();
+			//ShowOpenPdfButton = true;
+			//StateHasChanged();
+			var parameters = new DialogParameters
+					{
+					{ "PdfBase64", pdfBase64 }
+					};
+
+			var options = new DialogOptions
+				{
+					NoHeader = true,
+					MaxWidth = MaxWidth.Small,
+					CloseOnEscapeKey = false,
+					DisableBackdropClick = true
+				};
+
+			DialogService.Show<PrepareFormDialog>("", parameters, options);
 
 		}
 		catch (Exception ex)
@@ -794,4 +810,14 @@
 			Console.WriteLine("An error occurred: " + ex.Message);
 		}
 	}
+
+	private void OpenDialog()
+	{
+		var parameters = new DialogParameters();
+		var options = new DialogOptions() { MaxWidth = MaxWidth.ExtraSmall };
+		var dialog = DialogService.Show<DialogNotFoundError>("", parameters, options);
+	}
+
+
+
 }

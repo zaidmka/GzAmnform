@@ -69,6 +69,18 @@
       "PackagePath": "staticwebassets\\logo150.png"
     },
     {
+      "Id": "C:\\Users\\asus\\source\\repos\\GzAmnform\\wwwroot\\office_logo_1000.png",
+      "PackagePath": "staticwebassets\\office_logo_1000.png"
+    },
+    {
+      "Id": "C:\\Users\\asus\\source\\repos\\GzAmnform\\wwwroot\\office_logo_500.png",
+      "PackagePath": "staticwebassets\\office_logo_500.png"
+    },
+    {
+      "Id": "C:\\Users\\asus\\source\\repos\\GzAmnform\\wwwroot\\office_logo_750.png",
+      "PackagePath": "staticwebassets\\office_logo_750.png"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.GzAmnform.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

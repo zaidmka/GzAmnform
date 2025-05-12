@@ -1,0 +1,71 @@
+﻿<MudDialog Style="width: 350px; height: 350px; padding: 0;">
+	<DialogContent>
+		<div class="simple-dialog">
+			<img src="office_logo_750.png" alt="Logo" class="fixed-logo" />
+
+			@if (IsLoading)
+			{
+				<MudProgressLinear Indeterminate="true" Color="Color.Primary" Class="loader-bar" />
+				<p class="message">جاري تجهيز الاستمارة، الرجاء الانتظار...</p>
+			}
+			else
+			{
+				<MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="PrintForm" Size="Size.Large">
+					فتح الاستمارة
+				</MudButton>
+			}
+		</div>
+	</DialogContent>
+</MudDialog>
+
+@code {
+	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
+	[Inject] IJSRuntime JSRuntime { get; set; }
+
+	[Parameter] public string PdfBase64 { get; set; }
+
+	bool IsLoading = true;
+
+	protected override async Task OnInitializedAsync()
+	{
+		await Task.Delay(500); // Fake delay
+		await JSRuntime.InvokeVoidAsync("storePdfForLater", PdfBase64);
+		IsLoading = false;
+		StateHasChanged();
+	}
+
+	private async Task PrintForm()
+	{
+		await JSRuntime.InvokeVoidAsync("openStoredPdf");
+		MudDialog.Close(DialogResult.Ok(true));
+	}
+}
+
+<style>
+	.simple-dialog {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		height: 100%;
+		padding: 20px 10px;
+		font-family: Cairo;
+		text-align: center;
+	}
+
+	.fixed-logo {
+		width: 250px;
+		height: 250px;
+		margin-top: 10px;
+	}
+
+	.loader-bar {
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	.message {
+		margin-top: 10px;
+		font-size: 16px;
+	}
+</style>
