@@ -12,6 +12,8 @@
 @using QRCoder;
 @using iTextSharp.text;
 @using System.IO;
+@using System.Diagnostics;
+
 
 <PageTitle>GzOffice</PageTitle>
 <div style="font-family:Cairo;font-weight:700;">
@@ -425,7 +427,7 @@
 			{
 				<text>
 					<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-					جاري التحضير
+					جاري تجهيز الاستمارة، الرجاء الانتظار...
 				</text>
 			}
 			else
@@ -435,7 +437,7 @@
 		</button>
 
 		<div class="d-flex justify-content-center">
-			<button type="button" class="btn btn-success" id="openPdfBtn" onclick="openStoredPdf()" disable style="@GetOpenPdfStyle()">
+			<button type="button" class="btn btn-success" id="openPdfBtn" onclick="openStoredPdf()" disabled style="@GetOpenPdfStyle()">
 				طبع الاستمارة
 			</button>
 		</div>
@@ -468,7 +470,7 @@
 	private bool isSuccess = false;
 	private int ddid;
 	private Form data;
-	private string pdfBase64;
+	private string pdfBase64=string.Empty;
 	private int zkey;
 	private string message=string.Empty;
 	private string logMessage=string.Empty;
@@ -481,69 +483,56 @@
 		AddRelative();
 		AddSon();
 		AddTravel();
-		LoadData();
+		await LoadData();
 	}
 	public void Dispose()
 	{
 	}
-	async Task HandleFormSubmission()
-	{
 
-	}
 
 	async Task ViewForm()
 	{
 		try
 		{
 			IsLoading = true;
-			StateHasChanged(); 
-			//await Task.Delay(1000);
-			Console.Write("ViewForm");
-
-			var filePath = Path.Combine("PDF", "fillable.pdf");
-			if (!System.IO.File.Exists(filePath))
-			{
-				Console.WriteLine("File not found");
-				return;
-			}
-
-			byte[] pdfBytes = System.IO.File.ReadAllBytes(filePath);
-			if (pdfBytes == null || pdfBytes.Length == 0)
-			{
-				Console.WriteLine("Failed to read PDF file.");
-			}
-
+			StateHasChanged(); // message before start
+			await Task.Yield(); //show the loading before the heavy task! 
 			var readform = form;
 			readform.id = 1;
 
-			string qrcodetext = $"{readform.name}<{readform.id_number.ToString()}<{ readform.doc_no.ToString()}";
-			pdfBytes = FillFormField(pdfBytes, readform);
-			pdfBytes = FillPdfFormFieldsWithQRCode(pdfBytes, qrcodetext);
+			string qrcodetext = $"{readform.name}<{readform.id_number}<{readform.doc_no}";
 
+			//start the stopWatch
+			Stopwatch sw = Stopwatch.StartNew();
+
+			// heavy task start
+			var pdfBytes = await Task.Run(() =>
+			{
+				var filePath = Path.Combine("PDF", "fillable.pdf");
+				if (!File.Exists(filePath))
+					throw new FileNotFoundException("PDF template not found.");
+
+				var templateBytes = File.ReadAllBytes(filePath);
+				templateBytes = FillFormField(templateBytes, readform);
+				templateBytes = FillPdfFormFieldsWithQRCode(templateBytes, qrcodetext);
+
+				return templateBytes;
+			});
+			//stop the stopWatch
+			sw.Stop();
+			// after finish the pdf file 
 			pdfBase64 = Convert.ToBase64String(pdfBytes);
-			var base64Url = $"data:application/pdf;base64,{pdfBase64}";
 
 			using (StreamWriter logWriter = new StreamWriter("log.txt", true))
 			{
-				logMessage = $"{DateTime.Now} : new success form : {readform.name} - {readform.doc_no} - {readform.entity} - {readform.id_number}";
+				logMessage = $"{DateTime.Now} : new success form : {readform.name} - {readform.doc_no} - {readform.entity} - {readform.id_number} | Generation Time: {sw.ElapsedMilliseconds} ms";
 				await logWriter.WriteLineAsync(logMessage);
 			}
 
-			// wait until process finished
-			//await JSRuntime.InvokeVoidAsync("openPdfFromBase64", pdfBase64);
-
-			//store the pdfBase64 to and prepare it to open in another buttom
-			//await JSRuntime.InvokeVoidAsync("storePdfForLater", pdfBase64);
-
-			//show the button after press the prepare for second time
-			//await JSRuntime.InvokeVoidAsync("showOpenPdfBtn");
-
-			//ShowOpenPdfButton = true;
-			//StateHasChanged();
 			var parameters = new DialogParameters
-					{
-					{ "PdfBase64", pdfBase64 }
-					};
+		{
+			{ "PdfBase64", pdfBase64 }
+		};
 
 			var options = new DialogOptions
 				{
@@ -554,16 +543,15 @@
 				};
 
 			DialogService.Show<PrepareFormDialog>("", parameters, options);
-
 		}
 		catch (Exception ex)
 		{
-			Console.WriteLine($"Error OUT: {ex.Message}");
+			Console.WriteLine($"Error: {ex.Message}");
 		}
 		finally
 		{
 			IsLoading = false;
-			StateHasChanged(); 
+			StateHasChanged();
 		}
 	}
 
@@ -811,13 +799,6 @@
 		}
 	}
 
-	private void OpenDialog()
-	{
-		var parameters = new DialogParameters();
-		var options = new DialogOptions() { MaxWidth = MaxWidth.ExtraSmall };
-		var dialog = DialogService.Show<DialogNotFoundError>("", parameters, options);
-	}
-
-
+	
 
 }
